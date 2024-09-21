@@ -67,6 +67,39 @@ body {
   transform: scale(0.9);
 }
 
+&.fiesta {
+  .flower__leaf {
+    background-image: none;
+    animation: disco-colors 2s infinite;
+  }
+
+  .flower__light {
+    animation: disco-colors 1.5s infinite;
+  }
+
+  .flower--1, .flower--2, .flower--3 {
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+&.fiesta {
+  .flower__leaf {
+    background-image: none;
+    animation: disco-colors 2s infinite;
+  }
+
+  .flower__light {
+    animation: disco-colors 1.5s infinite;
+  }
+
+  .flower--1, .flower--2, .flower--3 {
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+
 .flower {
   position: absolute;
   bottom: 10vmin;
@@ -1390,4 +1423,85 @@ body {
 
 .container * {
   animation-play-state: paused !important;
+}
+
+/* Estilo para el botón de alternar */
+.toggle-button {
+  position:relative;
+  top: -100px;          /* En la parte superior de la pantalla */
+  right: 20px;        /* En la esquina derecha */
+  padding: 10px 20px;
+  background-color: #ff007f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* Animación al pasar el ratón por encima del botón */
+.toggle-button:hover {
+  transform: scale(1.1);       /* Un pequeño aumento de tamaño */
+  background-color: #007fff;   /* Cambia a azul eléctrico al hacer hover */
+}
+
+/* Animación de glitch */
+@keyframes glitch {
+  0% {
+    transform: translate(0px, 0px) skew(0deg);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-5px, 5px) skew(5deg);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(5px, -5px) skew(-5deg);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translate(-5px, 5px) skew(3deg);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translate(5px, -5px) skew(-3deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0px, 0px) skew(0deg);
+    opacity: 1;
+  }
+}
+
+/* Movimiento de baile en modo fiesta */
+@keyframes dance {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(15deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Aplica el efecto de glitch solo en modo fiesta */
+.flowers.fiesta .flower__light {
+  animation: glitch 1s infinite ease-in-out;
+}
+
+/* Aplica el movimiento de baile solo en modo fiesta */
+.flowers.fiesta .flower {
+  animation: dance 2s infinite ease-in-out;
 }
